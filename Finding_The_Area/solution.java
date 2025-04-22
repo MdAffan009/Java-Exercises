@@ -2,29 +2,25 @@ package Finding_The_Area;
 
 import java.util.Scanner;
 
-class algorithm {
+class Rectangle {
 
     public int length;
     public int width;
-    static int area;
 
-    public algorithm(int length, int width) {
+    public Rectangle(int length, int width) {
         this.length = length;
         this.width = width;
     }
 
-    public int Area() {
+    public int area() {
 
-        area = length * width;
-
-        System.out.println(area);
-
-        return area;
+        return length * width;
 
     }
 
-    public static int DoubleArea() {
-        return area * area;
+    public int Doublearea() {
+
+        return 2 * area();
     }
 
 }
@@ -48,12 +44,11 @@ public class solution {
 
         input.close();
 
-        algorithm algo = new algorithm(length, breadth);
-        algo.Area();
-
-        int doubleArea = algorithm.DoubleArea();
-
-        System.out.print(doubleArea);
+        Rectangle rect = new Rectangle(length, breadth);
+        
+        System.out.println("Orignal Area: " + rect.area());
+        System.out.println("Doubled Area: " + rect.Doublearea());
+       
 
     }
 
