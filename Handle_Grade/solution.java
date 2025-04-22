@@ -3,18 +3,14 @@ package Handle_Grade;
 import java.util.Scanner;
 
 class Student {
-
-    String name;
     int mathMarks;
     int englishMarks;
     int scienceMarks;
 
-    char grade;
+    public char grade;
     static int maximumMarks = 120;
 
-    public Student(String name, int mathMarks, int englishMarks, int scienceMarks) {
-
-        this.name = name;
+    public Student(int mathMarks, int englishMarks, int scienceMarks) {
         this.mathMarks = mathMarks;
         this.englishMarks = englishMarks;
         this.scienceMarks = scienceMarks;
@@ -27,7 +23,7 @@ class Student {
     }
 
     public int percentage() {
-        return totalMarks() / maximumMarks * 100;
+        return (int) (((double) totalMarks() / maximumMarks) * 100);
     }
 
     public char grade() {
@@ -59,6 +55,8 @@ class Student {
 
 public class Solution {
 
+    @SuppressWarnings("ConvertToTryWithResources")
+
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
@@ -75,21 +73,22 @@ public class Solution {
         System.out.println("How many marks you have gained at Science?");
         int scienceMarks = input.nextInt();
 
-        Student student = new Student(name, mathMarks, englishMarks, scienceMarks);
+        input.close();
 
-        System.out.println("You got " + student.totalMarks() +" marks in total");
+        Student student = new Student(mathMarks, englishMarks, scienceMarks);
 
-        System.out.println("You got " + student.percentage() +" %");
+        System.out.println("You got " + student.totalMarks() + " marks in total");
 
-        System.out.println("You got " + student.grade() +" Grade");
+        System.out.println("You got " + student.percentage() + " %");
 
-        if (student.isPass())
-        {
-            System.out.println("You have been promoted to next grade!");
+        System.out.println("You got " + student.grade() + " Grade");
+
+        if (student.isPass()) {
+            System.out.println(name + " ,You have been promoted to next grade!");
         }
 
         else {
-            System.out.println("You have been detained in this grade!");
+            System.out.println(name + " ,You have been detained in this grade!");
         }
 
     }
