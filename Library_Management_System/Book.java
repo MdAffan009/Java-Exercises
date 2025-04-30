@@ -17,6 +17,7 @@ public abstract class Book {
         this.author = author;
     }
 
+    @SuppressWarnings("unused")
     abstract String bookType();
 
     public void bookInfo() {

@@ -16,8 +16,15 @@ public class User {
         System.out.println("Name: " + name);
         System.out.println("Email: " + email);
         System.out.println("Books Borrowed: " + borrowedBookCount);
+        System.out.println();
     }
 
+    public void borrow() {
+        Library lib = new Library();
 
+        lib.initializeBooks();
+        lib.displayBook();
+
+    }
 
 }

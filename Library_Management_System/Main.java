@@ -5,11 +5,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-    Library lib = new Library();
+    User user = new User("Robin Parker", "robinparker@gmail.com", 0);
 
-    lib.initializeBooks();
-    lib.displayBook();
-
+    user.showInfo();
+    user.borrow();
 
     }
 }
