@@ -7,7 +7,7 @@ interface Borrowable {
     void Borrow();
 }
 
-abstract class Book {
+public abstract class Book {
 
     protected String title;
     protected String author;
@@ -105,8 +105,7 @@ class PrintedBooks extends Book implements Borrowable {
     };
 
     @Override
-    public void Borrow()
-    {
+    public void Borrow() {
         if (!isAvailable()) {
             System.out.println("Sorry, The book is out of stocks");
             return;

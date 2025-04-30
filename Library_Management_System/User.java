@@ -2,9 +2,9 @@ package Library_Management_System;
 
 public class User {
 
-    private String name;
-    private String email;
-    private int borrowedBookCount;
+    final private String name;
+    final private String email;
+    final private int borrowedBookCount;
 
     public User(String name, String email, int borrowedBookCount) {
         this.name = name;
@@ -12,19 +12,12 @@ public class User {
         this.borrowedBookCount = borrowedBookCount;
     }
 
-    // Getters
-    public String getName() {
-        return name;
+    public void showInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Email: " + email);
+        System.out.println("Books Borrowed: " + borrowedBookCount);
     }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public int getBorrowedBookCount() {
-        return borrowedBookCount;
-    }
-
-    //Setters
 
 }
