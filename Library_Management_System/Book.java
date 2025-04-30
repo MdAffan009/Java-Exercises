@@ -1,41 +1,118 @@
 package Library_Management_System;
 
-
 interface Borrowable {
-    boolean isAvailable();
-    void Borroe();
-}
 
+    boolean isAvailable();
+
+    void Borrow();
+}
 
 abstract class Book {
 
-    private final String title;
-    private final String author;
+    protected String title;
+    protected String author;
 
-    private int quantity;
-
-    public Book(String title, int quantity, String author) {
+    public Book(String title, String author) {
         this.title = title;
-        this.quantity = quantity;
         this.author = author;
     }
 
-    // Getters and Setters
-    public String getTitle() {
-        return title;
+    abstract String bookType();
+
+    public void bookInfo() {
+        System.out.println("Title :" + title);
+        System.out.println("Author :" + author);
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 }
 
+class EBook extends Book implements Borrowable {
 
+    final private int fileSize;
+    final private boolean serverDown = false;
+
+    public EBook(String title, String author, int fileSize) {
+        super(title, author);
+        this.fileSize = fileSize;
+    }
+
+    @Override
+    String bookType() {
+
+        return "EBook";
+
+    }
+
+    @Override
+    public void bookInfo() {
+
+        super.bookInfo();
+
+        System.out.println("Type: " + bookType());
+        System.out.println("File Size: " + fileSize);
+
+    }
+
+    @Override
+    public boolean isAvailable() {
+        return serverDown == false;
+    }
+
+    @Override
+    public void Borrow() {
+
+        if (!isAvailable()) {
+            System.out.println("Sorry, The server is down");
+            return;
+        }
+
+        System.out.println("We'll send the EBook on your Email");
+
+    }
+
+}
+
+class PrintedBooks extends Book implements Borrowable {
+    final private int quantity;
+
+    public PrintedBooks(String title, String author, int quantity) {
+        super(title, author);
+        this.quantity = quantity;
+    }
+
+    @Override
+    String bookType() {
+
+        return "Printed Books";
+
+    }
+
+    @Override
+    public void bookInfo() {
+
+        super.bookInfo();
+
+        System.out.println("Type: " + bookType());
+        System.out.println("Quantity: " + quantity);
+
+    }
+
+    @Override
+    public boolean isAvailable() {
+
+        return quantity > 0;
+
+    };
+
+    @Override
+    public void Borrow()
+    {
+        if (!isAvailable()) {
+            System.out.println("Sorry, The book is out of stocks");
+            return;
+        }
+
+        System.out.println("You can take this book");
+    }
+
+}
