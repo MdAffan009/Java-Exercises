@@ -10,6 +10,10 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
 
+        Library lib = new Library();
+        lib.initializeEBooks();
+        lib.initializePrintedBooks();
+
         System.out.println("Enter Your name: ");
         String name = input.nextLine();
 
@@ -19,7 +23,7 @@ public class Main {
         User user = new User(name, email, 0);
 
         // user.showInfo();
-        user.borrow(input);
+        user.borrow(input, lib);
 
         input.close();
 

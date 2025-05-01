@@ -4,33 +4,63 @@ import java.util.HashMap;
 
 public class Library {
 
-    private final HashMap<Integer, Book> books = new HashMap<>();
-    private int Id = 100;
+    public final HashMap<Integer, EBook> Ebooks = new HashMap<>();
 
-    
-    public void initializeBooks() {
+    public final HashMap<Integer, PrintedBooks> printedBooks = new HashMap<>();
+
+    private int Id = 1;
+
+    public void initializeEBooks() {
         Book eBook = new EBook("American Psycho", "Bret Easton Ellis", 500);
         Book eBook2 = new EBook("The Shining", "Stephen King", 800);
+
+        addEBook(eBook);
+        addEBook(eBook2);
+    }
+
+    public void initializePrintedBooks() {
 
         Book printedBook = new PrintedBooks("Crimes and Punishment", "Fyodor Dostoevsky", 3);
         Book printedBook2 = new PrintedBooks("The Stranger", "Albert Camus", 9);
 
-        addBook(eBook);
-        addBook(eBook2);
+        addPrintedBook(printedBook);
+        addPrintedBook(printedBook2);
 
-        addBook(printedBook);
-        addBook(printedBook2);
     }
 
-    private void addBook(Book book) {
-        books.put(Id, book);
+    private void addEBook(Book book) {
+        Ebooks.put(Id, (EBook) book);
         Id++;
     }
 
-    public void displayBook() {
+    private void addPrintedBook(Book book) {
+        printedBooks.put(Id, (PrintedBooks) book);
+        Id++;
+    }
 
-        for (Book book : books.values()) {
+    public void displayEBooks() {
+
+        for (var entry : Ebooks.entrySet()) {
+
+            int id = entry.getKey();
+            Book book = entry.getValue();
+
+            System.out.println("ID: " + id);
             book.bookInfo();
+
+            System.out.println("---------------------------");
+        }
+    }
+
+    public void displayPrintedBooks() {
+
+        for (var entry : printedBooks.entrySet()) {
+            int id = entry.getKey();
+            Book book = entry.getValue();
+
+            System.out.println("ID: " + id);
+            book.bookInfo();
+
             System.out.println("---------------------------");
         }
     }

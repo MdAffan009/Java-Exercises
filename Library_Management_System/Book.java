@@ -67,7 +67,8 @@ class EBook extends Book implements Borrowable {
             return;
         }
 
-        System.out.println("We'll send the EBook on your Email");
+        System.out.println("\nWe'll send the EBook on your Email");
+        
 
     }
 
@@ -112,7 +113,7 @@ class PrintedBooks extends Book implements Borrowable {
             return;
         }
 
-        System.out.println("You can take this book");
+        System.out.println("You can take this book from the counter");
     }
 
 }
